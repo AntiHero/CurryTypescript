@@ -3,19 +3,16 @@
  * https://medium.com/codex/currying-in-typescript-ca5226c85b85
  * E - Expected, P - Provided
  */
-type RemainingParameters<P extends any[], E extends any[]> = E extends [
-  any,
-  ...infer EX
-]
-  ? P extends [any, ...infer PX]
-    ? RemainingParameters<PX, EX>
+type RemParams<P extends any[], E extends any[]> = E extends [any, ...infer RE]
+  ? P extends [any, ...infer RP]
+    ? RemParams<RP, RE>
     : E
   : [];
 
 /**
  * Here we provide Curry type with two generics, last of which defines number of expected arguments
  * with default set to Parameters<Fn> https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype,
- * after that using RemainigParameters type we calculate the remaining tuple type, if it is empty we return ReturnType 
+ * after that using RemainigParameters type we calculate the remaining tuple type, if it is empty we return ReturnType
  * of provided function, otherwise we use Curry again (recursively) with second generic (Expected) set to remaining tuple type
  */
 type Curry<
@@ -23,9 +20,7 @@ type Curry<
   E extends any[] = Parameters<Fn>
 > = <P extends Partial<E>>(
   ...args: P
-) => RemainingParameters<P, E> extends []
-  ? ReturnType<Fn>
-  : Curry<Fn, RemainingParameters<P, E>>;
+) => RemParams<P, E> extends [] ? ReturnType<Fn> : Curry<Fn, RemParams<P, E>>;
 
 export function curry<Fn extends (...args: any[]) => any>(func: Fn): Curry<Fn>;
 
