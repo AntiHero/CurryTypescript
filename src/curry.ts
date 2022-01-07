@@ -1,24 +1,25 @@
 /**
  * With the help of this utility type we can check how much args still have to be passed to our function
  * https://medium.com/codex/currying-in-typescript-ca5226c85b85
+ * E - Extended, P - Provided
  */
-type RemainingParameters<
-  Provided extends any[],
-  Expected extends any[]
-> = Expected extends [infer E1, ...infer EX]
-  ? Provided extends [infer P1, ...infer PX]
+type RemainingParameters<P extends any[], E extends any[]> = E extends [
+  any,
+  ...infer EX
+]
+  ? P extends [any, ...infer PX]
     ? RemainingParameters<PX, EX>
-    : Expected
+    : E
   : [];
 
 type Curry<
   Fn extends (...args: any[]) => any,
-  Expected extends any[] = Parameters<Fn>
-> = <Provided extends Partial<Expected>>(
-  ...args: Provided
-) => RemainingParameters<Provided, Expected> extends []
+  E extends any[] = Parameters<Fn>
+> = <P extends Partial<E>>(
+  ...args: P
+) => RemainingParameters<P, E> extends []
   ? ReturnType<Fn>
-  : Curry<Fn, RemainingParameters<Provided, Expected>>;
+  : Curry<Fn, RemainingParameters<P, E>>;
 
 export function curry<Fn extends (...args: any[]) => any>(func: Fn): Curry<Fn>;
 
