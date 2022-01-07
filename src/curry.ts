@@ -16,7 +16,7 @@ type RemainingParameters<P extends any[], E extends any[]> = E extends [
  * Here we provide Curry type with two generics, last of which defines number of expected arguments
  * with default set to Parameters<Fn> https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype,
  * after that using RemainigParameters type we calculate the remaining tuple type, if it is empty we return ReturnType 
- * of provided function, otherwise we use Curry again (recursively) with second generic (Expected) set to remaining tuple
+ * of provided function, otherwise we use Curry again (recursively) with second generic (Expected) set to remaining tuple type
  */
 type Curry<
   Fn extends (...args: any[]) => any,
