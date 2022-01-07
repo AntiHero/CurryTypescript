@@ -1,3 +1,7 @@
+/**
+ * With the help of this utility type we can check how much args still have to be passed to our function
+ * https://medium.com/codex/currying-in-typescript-ca5226c85b85
+ */
 type RemainingParameters<
   Provided extends any[],
   Expected extends any[]
