@@ -1,5 +1,5 @@
 /**
- * With the help of this utility type we can check how much args still have to be passed to our function
+ * With the help of this utility type we can check how many args still have to be passed to our function (calculate remaing args tuple type)
  * https://medium.com/codex/currying-in-typescript-ca5226c85b85
  * E - Expected, P - Provided, RE - Remaining Expected, RP - remaining Provided
  */
