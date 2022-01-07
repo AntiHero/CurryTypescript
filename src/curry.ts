@@ -1,5 +1,5 @@
 /**
- * With the help of this utility type we can check how many args still have to be passed to our function (calculate remaing args tuple type)
+ * With the help of this utility type we can check how many args still have to be passed to our function (calculate remaining args tuple type)
  * https://medium.com/codex/currying-in-typescript-ca5226c85b85
  * E - Expected, P - Provided, RE - Remaining Expected, RP - remaining Provided
  */
@@ -14,7 +14,7 @@ type RemParams<P extends any[], E extends any[]> = E extends [any, ...infer RE]
  * with default set to Parameters<Fn> https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype,
  * Partial<E> https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype 
  * is used to make all expected arguments optional, so we can provide any arguments as we want to our curried function,
- * after that using RemParams (which stands for Remainig Parameters) type we calculate the remaining tuple type, if it is empty we return ReturnType
+ * after that using RemParams (which stands for Remaining Parameters) type we calculate the remaining tuple type, if it is empty we return ReturnType
  * of provided function, otherwise we use Curry again (recursively) with second generic (Expected) set to remaining tuple type
  */
 type Curry<
