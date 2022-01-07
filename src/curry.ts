@@ -1,7 +1,7 @@
 /**
  * With the help of this utility type we can check how much args still have to be passed to our function
  * https://medium.com/codex/currying-in-typescript-ca5226c85b85
- * E - Expected, P - Provided
+ * E - Expected, P - Provided, RE - Remaining Expected, RP - remaining Provided
  */
 type RemParams<P extends any[], E extends any[]> = E extends [any, ...infer RE]
   ? P extends [any, ...infer RP]
