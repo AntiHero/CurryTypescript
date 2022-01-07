@@ -1,3 +1,5 @@
+![test](https://github.com/AntiHero/CurryTypescript/actions/workflows/test.yml/badge.svg)
+
 ### Currying using Typescript
 
 This repo provides typed curry function that can take a function with variadic number of arguments
