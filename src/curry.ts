@@ -12,6 +12,8 @@ type RemParams<P extends any[], E extends any[]> = E extends [any, ...infer RE]
 /**
  * Here we provide Curry type with two generics, last of which defines number of expected arguments
  * with default set to Parameters<Fn> https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype,
+ * Partial<E> https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype 
+ * is used to make all expected arguments optional, so we can provide any arguments as we want to our curried function,
  * after that using RemainigParameters type we calculate the remaining tuple type, if it is empty we return ReturnType
  * of provided function, otherwise we use Curry again (recursively) with second generic (Expected) set to remaining tuple type
  */
