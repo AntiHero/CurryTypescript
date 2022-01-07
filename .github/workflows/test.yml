@@ -1,0 +1,18 @@
+name: Test
+
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Packages
+        run: |
+          npm install
+
+      - name: Test check
+        run: |
+          npm test
