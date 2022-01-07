@@ -23,8 +23,8 @@ export function curry(fn: (...args: any[]) => any): any {
     if (args.length >= fn.length) {
       return fn(...args);
     } else {
-      return function (...additionArgs: any[]) {
-        return curried(...[...args, ...additionArgs]);
+      return function (...restArgs: any[]) {
+        return curried(...args.concat(restArgs));
       };
     }
   };
