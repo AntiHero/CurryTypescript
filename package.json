@@ -4,7 +4,7 @@
   "description": "curry, currying, typescript, curry typescript",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage" 
+    "test": "tsc --noEmit && jest --coverage" 
   },
   "repository": {
     "type": "git",
